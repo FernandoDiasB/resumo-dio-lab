@@ -1,17 +1,33 @@
-# resumo-dio-lab
-Este repositório contém o resumo das lições aprendidas durante o desenvolvimento do lab na DIO.
+# resumo-criação-aruze
 
-Armazenamento
-O Azure fornece diversas opções de armazenamento para diferentes necessidades. O Blob Storage é ideal para armazenar dados não estruturados, como arquivos e imagens, enquanto o Azure Files permite compartilhamentos de arquivos em nuvem. Para bancos de dados relacionais, o Azure SQL Database é uma solução gerenciada, e o Cosmos DB atende a aplicações globais com seu banco de dados NoSQL distribuído.
 
-Redes
-A conectividade e a segurança são garantidas pelos serviços de redes do Azure. A Rede Virtual (VNet) permite a comunicação segura entre recursos na nuvem, enquanto o Azure Load Balancer distribui o tráfego para garantir alta disponibilidade. O Azure DNS facilita o gerenciamento de domínios e registros DNS.
 
-Segurança e Identidade
-A proteção de dados e o controle de acesso são prioridades no Azure. O Azure Active Directory (AD) gerencia identidades e autenticação, enquanto o Azure Security Center monitora ameaças em tempo real. O Azure Key Vault protege chaves criptográficas, certificados e segredos, essenciais para aplicações sensíveis.
+ Passos para criar uma VM Windows no Azure
+- Acesse o portal do Azure com sua conta (ou crie uma gratuita se ainda não tiver).
+- Pesquise por "Máquinas Virtuais", vá até a seção de serviços e clique em Criar > Máquina virtual do Azure.
+- Configure os detalhes da VM:
+- Nome: myVM
+- Imagem: Windows Server 2022 Datacenter (x64 Gen 2)
+- Usuário e senha do administrador
+- Regiões e tamanhos podem ser mantidos como padrão
+- Habilite as portas de entrada para acesso remoto e web:
+- Selecione RDP (3389) e HTTP (80)
+- Clique em Examinar + criar, revise os dados e depois selecione Criar.
+- Após a implantação, clique em Ir para o recurso.
 
-Banco de Dados e Analytics
-Para análise e processamento de dados, o Azure oferece soluções como o Azure SQL Database (banco de dados relacional), o Azure Synapse Analytics (plataforma de big data) e o Azure HDInsight, que suporta frameworks como Hadoop e Spark.
+🔌 Conectando-se à VM via RDP
+- Na página da VM, clique em Conectar > RDP, baixe o arquivo .rdp e abra-o.
+- Use as credenciais criadas para acessar o sistema.
+- Ignore o aviso de certificado se aparecer.
 
-Inteligência Artificial e Machine Learning
-O Azure também se destaca em IA e Machine Learning, com o Azure Machine Learning para criação e treinamento de modelos preditivos. Além disso, os Cognitive Services fornecem APIs prontas para visão computacional, processamento de linguagem natural (NLP) e outros recursos de IA.
+🌐 Instalar o servidor IIS
+Na sessão da VM (via RDP), abra o PowerShell e rode:
+Install-WindowsFeature -name Web-Server -IncludeManagementTools
+
+
+Depois, acesse o IP público da VM no navegador para ver a página padrão do IIS.
+
+🧹 Limpando os recursos
+- Se não precisar mais da VM, vá até o Grupo de Recursos e selecione Excluir grupo de recursos.
+⏲️ Ativar desligamento automático (opcional)
+- Dentro da VM, vá em Operações > Desligamento automático, ative e defina o horário.
